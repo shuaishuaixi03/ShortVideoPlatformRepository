@@ -179,7 +179,7 @@ public class FastDFSUtil {
         if (StringUtil.isNullOrEmpty(rangeStr)) {
             rangeStr = "bytes=0-" + (totalFileSize - 1);
         }
-        range = rangeStr.split("bytes=|--");
+        range = rangeStr.split("bytes=|-");
         long begin = 0;
         if (range.length >= 2) {
             begin = Long.parseLong(range[1]);

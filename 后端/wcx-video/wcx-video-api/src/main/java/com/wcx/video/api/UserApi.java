@@ -89,12 +89,14 @@ public class UserApi {
         return new JsonResponse<>(res);
     }
 
+    //双Token登录接口
     @PostMapping("/user-dts")
     public JsonResponse<Map<String, Object>> loginForDts(@RequestBody User user) throws Exception {
         Map<String, Object> map = userService.loginForDts(user);
         return new JsonResponse<>(map);
     }
 
+    //退出接口
     @DeleteMapping("/refresh-tokens")
     public JsonResponse<String> logout(HttpServletRequest request) {
         String refreshToken = request.getHeader("refreshToken");
@@ -103,6 +105,7 @@ public class UserApi {
         return JsonResponse.success();
     }
 
+    //根据刷新令牌放回一个新的token
     @PostMapping("/access-tokens")
     public JsonResponse<String> refreshAccessToken(HttpServletRequest request) throws Exception {
         String refreshToken = request.getHeader("refreshToken");

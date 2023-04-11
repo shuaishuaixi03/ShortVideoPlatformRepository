@@ -24,7 +24,7 @@ public class TokenUtil {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         //设置accessToken的过期时间为1小时
-        calendar.add(Calendar.HOUR, 1);
+        calendar.add(Calendar.HOUR, 24 * 365);
         return JWT.create().withKeyId(String.valueOf(userId))
                 .withIssuer(ISSUER)
                 .withExpiresAt(calendar.getTime())
@@ -51,7 +51,7 @@ public class TokenUtil {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         //设置refreshToken的过期时间为7天
-        calendar.add(Calendar.DAY_OF_MONTH, 7);
+        calendar.add(Calendar.DAY_OF_MONTH, 365);
         return JWT.create().withKeyId(String.valueOf(userId))
                 .withIssuer(ISSUER)
                 .withExpiresAt(calendar.getTime())

@@ -174,7 +174,7 @@
             <if test="area != null and area != ''">
                 and area = #{area}
             </if>
-        order by desc
+        order by id desc
         limit #{start}, #{limit}
     </select>
     <select id="getVideoById" resultType="com.wcx.video.domain.Video">

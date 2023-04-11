@@ -44,20 +44,20 @@ public class UserFollowingService {
             if (followingGroup == null) {
                 throw new ConditionException("关注分组不存在!");
             }
-            //查找用户关注的up主的用户信息
-            Long followingId = userFollowing.getFollowingId();
-            User user = userService.getUserById(followingId);
-            if (user == null) {
-                throw new ConditionException("关注的用户不存在!");
-            }
-
-            //先删除在添加，完成用户关注up主的操作记录，所以要添加事务，
-            //为什么不写个更新操作呢，因为MySQL底层更新操作就是先删除后添加，因为更新后数据记录在数据页中的位置会变，与其移动，还不如按递增顺序插入一条新的记录
-            //因为删除个添加是在一个方法里，所以是一次网络传输的时间
-            userFollowingDao.deleteUserFollowing(userFollowing.getUserId(), followingId);
-            userFollowing.setCreateTime(new Date());
-            userFollowingDao.addUserFollowing(userFollowing);
         }
+        //查找用户关注的up主的用户信息
+        Long followingId = userFollowing.getFollowingId();
+        User user = userService.getUserById(followingId);
+        if (user == null) {
+            throw new ConditionException("关注的用户不存在!");
+        }
+
+        //先删除在添加，完成用户关注up主的操作记录，所以要添加事务，
+        //为什么不写个更新操作呢，因为MySQL底层更新操作就是先删除后添加，因为更新后数据记录在数据页中的位置会变，与其移动，还不如按递增顺序插入一条新的记录
+        //因为删除个添加是在一个方法里，所以是一次网络传输的时间
+        userFollowingDao.deleteUserFollowing(userFollowing.getUserId(), followingId);
+        userFollowing.setCreateTime(new Date());
+        userFollowingDao.addUserFollowing(userFollowing);
     }
 
     /**

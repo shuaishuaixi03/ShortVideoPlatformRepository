@@ -17,5 +17,6 @@ public class UserFollowing {
 
     private Date createTime;
 
+    //VO层
     private UserInfo userInfo;
 }

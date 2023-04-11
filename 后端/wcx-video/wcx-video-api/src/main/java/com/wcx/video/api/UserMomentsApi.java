@@ -26,7 +26,6 @@ public class UserMomentsApi {
     @Autowired
     private UserSupport userSupport;
 
-
     @ApiLimitedRole(limitedRoleCodeList = {AuthRoleConstant.ROLE_LV0})
     @DataLimited
     @PostMapping("/user-moments")

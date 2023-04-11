@@ -22,9 +22,9 @@
     </insert>
     <select id="getDanmus" resultType="com.wcx.video.domain.Danmu">
         select
-        *
+            *
         from
-        t_danmu
+            t_danmu
         where
         videoId = #{videoId}
         <if test="startTime != null and startTime != '' ">
