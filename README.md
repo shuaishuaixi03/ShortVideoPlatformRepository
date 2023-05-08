@@ -1,2 +1,0 @@
-# ShortVideoPlatformRepository
-短视频平台项目仓库，个人学习总结的项目
